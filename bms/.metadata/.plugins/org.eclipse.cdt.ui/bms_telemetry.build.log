@@ -1,0 +1,14 @@
+15:47:52 **** Incremental Build of configuration Debug for project bms_telemetry ****
+make -r -j12 all 
+Building file: ../src/can_task_entry.c
+../src/can_task_entry.c:206:6: warning: no previous declaration for 'can_task_entry' [-Wmissing-declarations]
+  206 | void can_task_entry(void *pvParameters)
+      |      ^~~~~~~~~~~~~~
+Building target: bms_telemetry.elf
+arm-none-eabi-objcopy -O srec "bms_telemetry.elf"  "bms_telemetry.srec"
+arm-none-eabi-size --format=berkeley "bms_telemetry.elf"
+   text	   data	    bss	    dec	    hex	filename
+  23784	    216	  14352	  38352	   95d0	bms_telemetry.elf
+
+15:47:53 Build Finished. 0 errors, 1 warnings. (took 889ms)
+

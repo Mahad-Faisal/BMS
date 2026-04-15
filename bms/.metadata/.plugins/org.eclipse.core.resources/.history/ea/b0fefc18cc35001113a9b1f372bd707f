@@ -1,0 +1,70 @@
+#include "new_thread0.h"
+/* New Thread entry function */
+#include "ina226.h"
+#include"bms.h"
+#include "FreeRTOS.h"
+#include "semphr.h"
+
+volatile bool uart_tx_complete = false;
+extern SemaphoreHandle_t bms_mutex;
+void sensor_task_entry(void *pvParameters);
+void can_task_entry(void *pvParameters);
+void uart_task_entry(void *pvParameters);
+
+void uart_callback(uart_callback_args_t *p_args)
+{
+    if(p_args->event == UART_EVENT_TX_COMPLETE)
+    {
+        uart_tx_complete = true;
+    }
+}
+
+void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
+{
+    FSP_PARAMETER_NOT_USED(xTask);
+    FSP_PARAMETER_NOT_USED(pcTaskName);
+    __BKPT(0); // halt in debugger on stack overflow
+}
+
+/* Sensor task */
+static StackType_t sensor_stack[512];
+static StaticTask_t sensor_tcb;
+TaskHandle_t sensor_task_handle;
+
+/* CAN TX task */
+static StackType_t can_stack[512];
+static StaticTask_t can_tcb;
+TaskHandle_t can_task_handle;
+
+/* UART task */
+static StackType_t uart_stack[512];
+static StaticTask_t uart_tcb;
+TaskHandle_t uart_task_handle;
+
+/* pvParameters contains TaskHandle_t */
+void new_thread0_entry(void *pvParameters)
+{
+    FSP_PARAMETER_NOT_USED(pvParameters);
+
+    bms_mutex = xSemaphoreCreateMutexStatic(&bms_mutex_buffer);
+    configASSERT(bms_mutex != NULL);
+
+    R_SCI_B_UART_Open(&g_uart0_ctrl, &g_uart0_cfg);
+    uint8_t msg[] = "BMS starting...\r\n";
+    uart_tx_complete = false;
+    R_SCI_B_UART_Write(&g_uart0_ctrl, msg, sizeof(msg)-1);
+    while(!uart_tx_complete) { vTaskDelay(1); }
+
+  //  INA226_Init();  /* I2C + config + cal registers */
+
+    /* Now create tasks — peripherals are ready */
+    sensor_task_handle = xTaskCreateStatic(sensor_task_entry, "Sensor", 512, NULL, 3, sensor_stack, &sensor_tcb);
+    can_task_handle    = xTaskCreateStatic(can_task_entry,    "CAN",    512, NULL, 2, can_stack,    &can_tcb);
+    uart_task_handle   = xTaskCreateStatic(uart_task_entry,   "UART",   512, NULL, 1, uart_stack,   &uart_tcb);
+
+    /* This thread's job is done — suspend or idle */
+    for (;;)
+    {
+        vTaskDelay(pdMS_TO_TICKS(1000));
+    }
+}

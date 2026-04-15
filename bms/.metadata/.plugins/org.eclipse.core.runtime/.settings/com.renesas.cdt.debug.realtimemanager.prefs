@@ -1,0 +1,3 @@
+com.renesas.cdt.debug.realtimemanager.internal.ExpressionUpdateTask=50
+eclipse.preferences.version=1
+prefRealtimeExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<realtimeExpressions>\r\n    <expression text\="bms_data"/>\r\n</realtimeExpressions>\r\n

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MF0 version="1.1" packageUris="http://schema.mathworks.com/mf0/slsa_mm_param_rtp/R2023a">
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="84888ae7-baaf-47db-89d4-ac4c47147742">
+    <id type="slsa.mm.param.rtp.VariableId" uuid="d9a8df3d-9878-4e95-8478-dee0aaa23335"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="3403c6cc-4cfd-4643-8071-474293d07ac2"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.VariableId type="slsa.mm.param.rtp.VariableId" uuid="04452652-d76c-4401-9fbe-67e457da3d14">
+    <workspaceName>global-workspace</workspaceName>
+    <name>Q_nom</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="18db8772-dd4f-4268-9f46-b030a267cb59"/>
+  </slsa.mm.param.rtp.VariableId>
+  <slsa.mm.param.rtp.VariableId type="slsa.mm.param.rtp.VariableId" uuid="3c0fc361-f85c-45d8-8a50-ddf0caffd647">
+    <workspaceName>global-workspace</workspaceName>
+    <name>temp_bp</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="1921c903-05d5-4705-b0b4-02d9eb606e92"/>
+  </slsa.mm.param.rtp.VariableId>
+  <slsa.mm.param.rtp.ModelMetadata type="slsa.mm.param.rtp.ModelMetadata" uuid="fc7e29f2-ea62-4937-84ee-29958e9873ff">
+    <modelName>single_cell_battery</modelName>
+  </slsa.mm.param.rtp.ModelMetadata>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="d6c3475a-b9f5-425a-b085-538429c23499">
+    <id type="slsa.mm.param.rtp.VariableId" uuid="8a368ba9-744b-47eb-a19b-a833e0528a60"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="90258870-52a0-4bc8-99c7-ec7ce5fd2b84"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="fec03753-33de-4846-9a5f-4315d07efc75">
+    <id type="slsa.mm.param.rtp.VariableId" uuid="50a70be2-5b0b-4afd-94e4-6c2989535360"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="17508ec6-9707-4ea3-9612-8342d02d1532"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="18db8772-dd4f-4268-9f46-b030a267cb59">
+    <id type="slsa.mm.param.rtp.VariableId" uuid="04452652-d76c-4401-9fbe-67e457da3d14"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="1d561417-046e-4cd8-b3af-673f7576a96e"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="90258870-52a0-4bc8-99c7-ec7ce5fd2b84">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="d6c3475a-b9f5-425a-b085-538429c23499"/>
+    <valueIndices>2</valueIndices>
+    <valueIndices>37</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.VariableId type="slsa.mm.param.rtp.VariableId" uuid="50a70be2-5b0b-4afd-94e4-6c2989535360">
+    <workspaceName>global-workspace</workspaceName>
+    <name>C2</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="fec03753-33de-4846-9a5f-4315d07efc75"/>
+  </slsa.mm.param.rtp.VariableId>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="17508ec6-9707-4ea3-9612-8342d02d1532">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="fec03753-33de-4846-9a5f-4315d07efc75"/>
+    <valueIndices>0</valueIndices>
+    <valueIndices>0</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="1d561417-046e-4cd8-b3af-673f7576a96e">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="18db8772-dd4f-4268-9f46-b030a267cb59"/>
+    <valueIndices>1</valueIndices>
+    <valueIndices>1</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.VariableId type="slsa.mm.param.rtp.VariableId" uuid="8a368ba9-744b-47eb-a19b-a833e0528a60">
+    <workspaceName>global-workspace</workspaceName>
+    <name>R0_2d_fix</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="d6c3475a-b9f5-425a-b085-538429c23499"/>
+  </slsa.mm.param.rtp.VariableId>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="b7361fac-5bf8-49f9-bc67-487234069360">
+    <id type="slsa.mm.param.rtp.VariableId" uuid="de9eade6-918f-4166-bf9e-c6c067d9f4b9"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="225dbd79-69bf-4df2-acee-5e9ebb65dfcd"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="9eafcf5f-5454-41a6-b446-7041514ab739">
+    <id type="slsa.mm.param.rtp.VariableId" uuid="e5150d20-6d27-40b1-9dca-232080da2b0b"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="dc52c309-8d80-430a-92d7-a12af2bec3fe"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.VariableId type="slsa.mm.param.rtp.VariableId" uuid="de9eade6-918f-4166-bf9e-c6c067d9f4b9">
+    <workspaceName>global-workspace</workspaceName>
+    <name>R2</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="b7361fac-5bf8-49f9-bc67-487234069360"/>
+  </slsa.mm.param.rtp.VariableId>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="225dbd79-69bf-4df2-acee-5e9ebb65dfcd">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="b7361fac-5bf8-49f9-bc67-487234069360"/>
+    <valueIndices>38</valueIndices>
+    <valueIndices>38</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="1921c903-05d5-4705-b0b4-02d9eb606e92">
+    <id type="slsa.mm.param.rtp.VariableId" uuid="3c0fc361-f85c-45d8-8a50-ddf0caffd647"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="f204ae75-bb7b-4ef9-b19b-0156f98d910b"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="99ac9a01-b9ab-4344-99d1-a628154144a1">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="c558b9de-575a-4a67-901c-6362c379ec13"/>
+    <valueIndices>41</valueIndices>
+    <valueIndices>76</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.VariableId type="slsa.mm.param.rtp.VariableId" uuid="d9f72a23-0354-4142-a26e-47de24e3d1b3">
+    <workspaceName>global-workspace</workspaceName>
+    <name>inv_C1_2d_fixed</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="c558b9de-575a-4a67-901c-6362c379ec13"/>
+  </slsa.mm.param.rtp.VariableId>
+  <slsa.mm.param.rtp.VariableId type="slsa.mm.param.rtp.VariableId" uuid="d9a8df3d-9878-4e95-8478-dee0aaa23335">
+    <workspaceName>global-workspace</workspaceName>
+    <name>SoC_init</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="84888ae7-baaf-47db-89d4-ac4c47147742"/>
+  </slsa.mm.param.rtp.VariableId>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="f4a23812-2959-453f-b1bc-d796f12438e5">
+    <id type="slsa.mm.param.rtp.VariableId" uuid="c36c4367-a5f4-425d-a7dd-e940ea7764b3"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="8b3971f2-c85b-44b8-99cb-6cbf4afb39b0"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="3403c6cc-4cfd-4643-8071-474293d07ac2">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="84888ae7-baaf-47db-89d4-ac4c47147742"/>
+    <valueIndices>39</valueIndices>
+    <valueIndices>39</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.VariableId type="slsa.mm.param.rtp.VariableId" uuid="c36c4367-a5f4-425d-a7dd-e940ea7764b3">
+    <workspaceName>global-workspace</workspaceName>
+    <name>Ts</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="f4a23812-2959-453f-b1bc-d796f12438e5"/>
+  </slsa.mm.param.rtp.VariableId>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="8b3971f2-c85b-44b8-99cb-6cbf4afb39b0">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="f4a23812-2959-453f-b1bc-d796f12438e5"/>
+    <valueIndices>40</valueIndices>
+    <valueIndices>40</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="c558b9de-575a-4a67-901c-6362c379ec13">
+    <id type="slsa.mm.param.rtp.VariableId" uuid="d9f72a23-0354-4142-a26e-47de24e3d1b3"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="99ac9a01-b9ab-4344-99d1-a628154144a1"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="29c5109f-2981-4f4d-b629-a975c7509326">
+    <id type="slsa.mm.param.rtp.VariableId" uuid="88325b6b-4584-497e-a23d-7121bfac0c4c"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="f332160c-b049-4d7c-9f19-5d3ef3076f42"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="08636a04-d420-4114-8d5f-e855beabbada">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="47492bba-44fe-49a6-b7f2-dc9ac45c2ef2"/>
+    <valueIndices>155</valueIndices>
+    <valueIndices>166</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.VariableId type="slsa.mm.param.rtp.VariableId" uuid="88325b6b-4584-497e-a23d-7121bfac0c4c">
+    <workspaceName>global-workspace</workspaceName>
+    <name>neg_inv_R1C1_2d_fixed</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="29c5109f-2981-4f4d-b629-a975c7509326"/>
+  </slsa.mm.param.rtp.VariableId>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="f332160c-b049-4d7c-9f19-5d3ef3076f42">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="29c5109f-2981-4f4d-b629-a975c7509326"/>
+    <valueIndices>77</valueIndices>
+    <valueIndices>112</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="619085c3-6849-4e77-8998-97c589a924e7">
+    <id type="slsa.mm.param.rtp.VariableId" uuid="15ff8423-d99c-4ece-ab2f-e91fe5514e10"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="e02dda23-70e7-49d3-a996-f63a3ea8f55e"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.VariableId type="slsa.mm.param.rtp.VariableId" uuid="15ff8423-d99c-4ece-ab2f-e91fe5514e10">
+    <workspaceName>global-workspace</workspaceName>
+    <name>ocv_tbl</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="619085c3-6849-4e77-8998-97c589a924e7"/>
+  </slsa.mm.param.rtp.VariableId>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="e02dda23-70e7-49d3-a996-f63a3ea8f55e">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="619085c3-6849-4e77-8998-97c589a924e7"/>
+    <valueIndices>113</valueIndices>
+    <valueIndices>133</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.VariableId type="slsa.mm.param.rtp.VariableId" uuid="e5150d20-6d27-40b1-9dca-232080da2b0b">
+    <workspaceName>global-workspace</workspaceName>
+    <name>soc_bp</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="9eafcf5f-5454-41a6-b446-7041514ab739"/>
+  </slsa.mm.param.rtp.VariableId>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="dc52c309-8d80-430a-92d7-a12af2bec3fe">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="9eafcf5f-5454-41a6-b446-7041514ab739"/>
+    <valueIndices>134</valueIndices>
+    <valueIndices>154</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="47492bba-44fe-49a6-b7f2-dc9ac45c2ef2">
+    <id type="slsa.mm.param.rtp.VariableId" uuid="b2d95cef-fae8-467d-a6fd-a05ad8a59229"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="08636a04-d420-4114-8d5f-e855beabbada"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="f204ae75-bb7b-4ef9-b19b-0156f98d910b">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="1921c903-05d5-4705-b0b4-02d9eb606e92"/>
+    <valueIndices>167</valueIndices>
+    <valueIndices>169</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.VariableId type="slsa.mm.param.rtp.VariableId" uuid="b2d95cef-fae8-467d-a6fd-a05ad8a59229">
+    <workspaceName>global-workspace</workspaceName>
+    <name>soc_common</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="47492bba-44fe-49a6-b7f2-dc9ac45c2ef2"/>
+  </slsa.mm.param.rtp.VariableId>
+</MF0>

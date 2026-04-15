@@ -1,0 +1,212 @@
+/* generated HAL source file - do not edit */
+#include "hal_data.h"
+sci_b_uart_instance_ctrl_t g_uart0_ctrl;
+
+sci_b_baud_setting_t g_uart0_baud_setting =
+        {
+        /* Baud rate calculated with 0.160% error. */.baudrate_bits_b.abcse = 0,
+          .baudrate_bits_b.abcs = 0, .baudrate_bits_b.bgdm = 1, .baudrate_bits_b.cks = 0, .baudrate_bits_b.brr = 64, .baudrate_bits_b.mddr =
+                  (uint8_t) 256,
+          .baudrate_bits_b.brme = false };
+
+/** UART extended configuration for UARTonSCI HAL driver */
+const sci_b_uart_extended_cfg_t g_uart0_cfg_extend =
+{ .clock = SCI_B_UART_CLOCK_INT, .rx_edge_start = SCI_B_UART_START_BIT_FALLING_EDGE, .noise_cancel =
+          SCI_B_UART_NOISE_CANCELLATION_DISABLE,
+  .rx_fifo_trigger = SCI_B_UART_RX_FIFO_TRIGGER_MAX, .p_baud_setting = &g_uart0_baud_setting, .flow_control =
+          SCI_B_UART_FLOW_CONTROL_RTS,
+#if 0xFF != 0xFF
+                .flow_control_pin       = BSP_IO_PORT_FF_PIN_0xFF,
+                #else
+  .flow_control_pin = (bsp_io_port_pin_t) UINT16_MAX,
+#endif
+  .rs485_setting =
+  { .enable = SCI_B_UART_RS485_DISABLE,
+    .polarity = SCI_B_UART_RS485_DE_POLARITY_HIGH,
+    .assertion_time = 1,
+    .negation_time = 1, } };
+
+/** UART interface configuration */
+const uart_cfg_t g_uart0_cfg =
+{ .channel = 3, .data_bits = UART_DATA_BITS_8, .parity = UART_PARITY_OFF, .stop_bits = UART_STOP_BITS_1, .p_callback =
+          uart_callback,
+  .p_context = NULL, .p_extend = &g_uart0_cfg_extend,
+#define RA_NOT_DEFINED (1)
+#if (RA_NOT_DEFINED == RA_NOT_DEFINED)
+  .p_transfer_tx = NULL,
+#else
+                .p_transfer_tx       = &RA_NOT_DEFINED,
+#endif
+#if (RA_NOT_DEFINED == RA_NOT_DEFINED)
+  .p_transfer_rx = NULL,
+#else
+                .p_transfer_rx       = &RA_NOT_DEFINED,
+#endif
+#undef RA_NOT_DEFINED
+  .rxi_ipl = (2),
+  .txi_ipl = (2), .tei_ipl = (2), .eri_ipl = (2),
+#if defined(VECTOR_NUMBER_SCI3_RXI)
+                .rxi_irq             = VECTOR_NUMBER_SCI3_RXI,
+#else
+  .rxi_irq = FSP_INVALID_VECTOR,
+#endif
+#if defined(VECTOR_NUMBER_SCI3_TXI)
+                .txi_irq             = VECTOR_NUMBER_SCI3_TXI,
+#else
+  .txi_irq = FSP_INVALID_VECTOR,
+#endif
+#if defined(VECTOR_NUMBER_SCI3_TEI)
+                .tei_irq             = VECTOR_NUMBER_SCI3_TEI,
+#else
+  .tei_irq = FSP_INVALID_VECTOR,
+#endif
+#if defined(VECTOR_NUMBER_SCI3_ERI)
+                .eri_irq             = VECTOR_NUMBER_SCI3_ERI,
+#else
+  .eri_irq = FSP_INVALID_VECTOR,
+#endif
+        };
+
+/* Instance structure to use this module. */
+const uart_instance_t g_uart0 =
+{ .p_ctrl = &g_uart0_ctrl, .p_cfg = &g_uart0_cfg, .p_api = &g_uart_on_sci_b };
+/* Nominal and Data bit timing configuration */
+
+can_bit_timing_cfg_t g_canfd0_bit_timing_cfg =
+{
+/* Actual bitrate: 500000 Hz. Actual sample point: 75 %. */
+.baud_rate_prescaler = 2,
+  .time_segment_1 = 44, .time_segment_2 = 15, .synchronization_jump_width = 4 };
+
+#if BSP_FEATURE_CANFD_FD_SUPPORT
+can_bit_timing_cfg_t g_canfd0_data_timing_cfg =
+{
+    /* Actual bitrate: 1000000 Hz. Actual sample point: 77 %. */
+    .baud_rate_prescaler = 2,
+    .time_segment_1 = 22,
+    .time_segment_2 = 7,
+    .synchronization_jump_width = 1
+};
+#endif
+
+extern const canfd_afl_entry_t p_canfd0_afl[CANFD_CFG_AFL_CH0_RULE_NUM];
+
+#define CANFD_CFG_COMMONFIFO0 (((0) << R_CANFD_CFDCFCC_CFE_Pos) | \
+                                        ((0) << R_CANFD_CFDCFCC_CFRXIE_Pos) | \
+                                        ((0) << R_CANFD_CFDCFCC_CFTXIE_Pos) | \
+                                        ((0) << R_CANFD_CFDCFCC_CFPLS_Pos) | \
+                                        ((0) << R_CANFD_CFDCFCC_CFM_Pos) | \
+                                        ((0) << R_CANFD_CFDCFCC_CFITSS_Pos) | \
+                                        ((0) << R_CANFD_CFDCFCC_CFITR_Pos) | \
+                                        ((0)  << R_CANFD_CFDCFCC_CFIM_Pos) | \
+                                        ((3U) << R_CANFD_CFDCFCC_CFIGCV_Pos) | \
+                                        ((0) << R_CANFD_CFDCFCC_CFTML_Pos) | \
+                                        ((3) << R_CANFD_CFDCFCC_CFDC_Pos) | \
+                                        (0 << R_CANFD_CFDCFCC_CFITT_Pos))
+
+/* Buffer RAM used: 320 bytes */
+canfd_global_cfg_t g_canfd0_global_cfg =
+{ .global_interrupts = (0x3), .global_config = ((R_CANFD_CFDGCFG_TPRI_Msk) | (0)
+        | (BSP_CFG_CANFDCLK_SOURCE == BSP_CLOCKS_SOURCE_CLOCK_MAIN_OSC ? R_CANFD_CFDGCFG_DCS_Msk : 0U) | (0)
+        | ((0) << R_CANFD_CFDGCFG_ITRCP_Pos)),
+  .rx_mb_config = (0 | ((0) << R_CANFD_CFDRMNB_RMPLS_Pos)), .global_err_ipl = CANFD_CFG_GLOBAL_ERR_IPL, .rx_fifo_ipl =
+          CANFD_CFG_RX_FIFO_IPL,
+  .rx_fifo_config =
+  { ((3U) << R_CANFD_CFDRFCC_RFIGCV_Pos) | ((3) << R_CANFD_CFDRFCC_RFDC_Pos) | ((0) << R_CANFD_CFDRFCC_RFPLS_Pos)
+            | ((R_CANFD_CFDRFCC_RFIE_Msk | R_CANFD_CFDRFCC_RFIM_Msk)) | ((1)),
+    ((3U) << R_CANFD_CFDRFCC_RFIGCV_Pos) | ((3) << R_CANFD_CFDRFCC_RFDC_Pos) | ((0) << R_CANFD_CFDRFCC_RFPLS_Pos)
+            | ((R_CANFD_CFDRFCC_RFIE_Msk | R_CANFD_CFDRFCC_RFIM_Msk)) | ((0)) },
+  .common_fifo_config =
+  {
+  CANFD_CFG_COMMONFIFO0 } };
+
+canfd_extended_cfg_t g_canfd0_extended_cfg =
+{ .p_afl = p_canfd0_afl, .txmb_txi_enable = ((1ULL << 0) | 0ULL), .error_interrupts = (R_CANFD_CFDC_CTR_BOEIE_Msk
+        | R_CANFD_CFDC_CTR_BORIE_Msk | 0U),
+#if BSP_FEATURE_CANFD_FD_SUPPORT
+    .p_data_timing      = &g_canfd0_data_timing_cfg,
+#else
+  .p_data_timing = NULL,
+#endif
+  .delay_compensation = (1),
+  .p_global_cfg = &g_canfd0_global_cfg, };
+
+canfd_instance_ctrl_t g_canfd0_ctrl;
+const can_cfg_t g_canfd0_cfg =
+{ .channel = 0, .p_bit_timing = &g_canfd0_bit_timing_cfg, .p_callback = canfd0_callback, .p_extend =
+          &g_canfd0_extended_cfg,
+  .p_context = NULL, .ipl = (2),
+#if defined(VECTOR_NUMBER_CAN0_COMFRX)
+    .rx_irq             = VECTOR_NUMBER_CAN0_COMFRX,
+#else
+  .rx_irq = FSP_INVALID_VECTOR,
+#endif
+#if defined(VECTOR_NUMBER_CAN0_TX)
+    .tx_irq             = VECTOR_NUMBER_CAN0_TX,
+#else
+  .tx_irq = FSP_INVALID_VECTOR,
+#endif
+#if defined(VECTOR_NUMBER_CAN0_CHERR)
+    .error_irq             = VECTOR_NUMBER_CAN0_CHERR,
+#else
+  .error_irq = FSP_INVALID_VECTOR,
+#endif
+        };
+/* Instance structure to use this module. */
+const can_instance_t g_canfd0 =
+{ .p_ctrl = &g_canfd0_ctrl, .p_cfg = &g_canfd0_cfg, .p_api = &g_canfd_on_canfd };
+iic_master_instance_ctrl_t g_i2c_master0_ctrl;
+const iic_master_extended_cfg_t g_i2c_master0_extend =
+{ .timeout_mode = IIC_MASTER_TIMEOUT_MODE_SHORT,
+  .timeout_scl_low = IIC_MASTER_TIMEOUT_SCL_LOW_ENABLED,
+  .smbus_operation = 0,
+  /* Actual calculated bitrate: 398936. Actual calculated duty cycle: 50%. */.clock_settings.brl_value = 31,
+  .clock_settings.brh_value = 31,
+  .clock_settings.cks_value = 1,
+  .clock_settings.sddl_value = 0,
+  .clock_settings.dlcs_value = 0, };
+const i2c_master_cfg_t g_i2c_master0_cfg =
+{ .channel = 1, .rate = I2C_MASTER_RATE_FAST, .slave = 0x40, .addr_mode = I2C_MASTER_ADDR_MODE_7BIT,
+#define RA_NOT_DEFINED (1)
+#if (RA_NOT_DEFINED == RA_NOT_DEFINED)
+  .p_transfer_tx = NULL,
+#else
+                .p_transfer_tx       = &RA_NOT_DEFINED,
+#endif
+#if (RA_NOT_DEFINED == RA_NOT_DEFINED)
+  .p_transfer_rx = NULL,
+#else
+                .p_transfer_rx       = &RA_NOT_DEFINED,
+#endif
+#undef RA_NOT_DEFINED
+  .p_callback = i2c_master_callback,
+  .p_context = NULL,
+#if defined(VECTOR_NUMBER_IIC1_RXI)
+    .rxi_irq             = VECTOR_NUMBER_IIC1_RXI,
+#else
+  .rxi_irq = FSP_INVALID_VECTOR,
+#endif
+#if defined(VECTOR_NUMBER_IIC1_TXI)
+    .txi_irq             = VECTOR_NUMBER_IIC1_TXI,
+#else
+  .txi_irq = FSP_INVALID_VECTOR,
+#endif
+#if defined(VECTOR_NUMBER_IIC1_TEI)
+    .tei_irq             = VECTOR_NUMBER_IIC1_TEI,
+#else
+  .tei_irq = FSP_INVALID_VECTOR,
+#endif
+#if defined(VECTOR_NUMBER_IIC1_ERI)
+    .eri_irq             = VECTOR_NUMBER_IIC1_ERI,
+#else
+  .eri_irq = FSP_INVALID_VECTOR,
+#endif
+  .ipl = (2),
+  .p_extend = &g_i2c_master0_extend, };
+/* Instance structure to use this module. */
+const i2c_master_instance_t g_i2c_master0 =
+{ .p_ctrl = &g_i2c_master0_ctrl, .p_cfg = &g_i2c_master0_cfg, .p_api = &g_i2c_master_on_iic };
+void g_hal_init(void)
+{
+    g_common_init ();
+}
