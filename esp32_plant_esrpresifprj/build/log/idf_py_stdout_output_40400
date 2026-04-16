@@ -1,0 +1,137 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.4\tools/idf_monitor.py -p COM8 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 C:\Users\mahad\workspace\esp32_plant\build\esp32_plant.elf C:\Users\mahad\workspace\esp32_plant\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.4\tools\idf.py' '-p' 'COM8'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6280
+load:0x40078000,len:15864
+load:0x40080400,len:3920
+entry 0x40080644
+[0;32mI (27) boot: ESP-IDF v5.5.4 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Apr 15 2026 21:53:46[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (29) boot: chip revision: v3.1[0m
+[0;32mI (32) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (35) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (39) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (42) boot: Enabling RNG early entropy source...[0m
+[0;32mI (47) boot: Partition Table:[0m
+[0;32mI (49) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (62) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (69) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (75) boot: End of partition table[0m
+[0;32mI (79) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=0700ch ( 28684) map[0m
+[0;32mI (96) esp_image: segment 1: paddr=00017034 vaddr=3ffb0000 size=02580h (  9600) load[0m
+[0;32mI (100) esp_image: segment 2: paddr=000195bc vaddr=40080000 size=06a5ch ( 27228) load[0m
+[0;32mI (112) esp_image: segment 3: paddr=00020020 vaddr=400d0020 size=0899ch ( 35228) map[0m
+[0;32mI (124) esp_image: segment 4: paddr=000289c4 vaddr=40086a5c size=0571ch ( 22300) load[0m
+[0;32mI (133) esp_image: segment 5: paddr=0002e0e8 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (139) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (139) boot: Disabling RNG early entropy source...[0m
+[0;32mI (152) cpu_start: Multicore app[0m
+[0;32mI (160) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+[0;32mI (160) cpu_start: Pro cpu start user code[0m
+[0;32mI (160) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (162) app_init: Application information:[0m
+[0;32mI (166) app_init: Project name:     esp32_plant[0m
+[0;32mI (170) app_init: App version:      1[0m
+[0;32mI (174) app_init: Compile time:     Apr 15 2026 21:53:33[0m
+[0;32mI (179) app_init: ELF file SHA256:  3259e02ed...[0m
+[0;32mI (183) app_init: ESP-IDF:          v5.5.4[0m
+[0;32mI (187) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (191) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (195) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (199) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (205) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (210) heap_init: At 3FFB2E28 len 0002D1D8 (180 KiB): DRAM[0m
+[0;32mI (215) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (221) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (226) heap_init: At 4008C178 len 00013E88 (79 KiB): IRAM[0m
+[0;33mW (232) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig[0m
+[0;32mI (244) spi_flash: detected chip: generic[0m
+[0;32mI (248) spi_flash: flash io: dio[0m
+[0;33mW (251) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (264) main_task: Started on CPU0[0m
+[0;32mI (274) main_task: Calling app_main()[0m
+t=0s V=31.5191 SoC=1.0000 Tc=25.00 Ts=25.00
+[0;32mI (274) main_task: Returned from app_main()[0m
+t=0s V=31.4900 SoC=1.0000 Tc=25.00 Ts=25.00
+t=0s V=31.4614 SoC=1.0000 Tc=25.00 Ts=25.00
+t=0s V=31.4333 SoC=1.0000 Tc=25.00 Ts=25.00
+t=0s V=31.4057 SoC=1.0000 Tc=25.00 Ts=25.00
+t=0s V=31.3786 SoC=1.0000 Tc=25.00 Ts=25.00
+t=0s V=31.3520 SoC=0.9999 Tc=25.00 Ts=25.00
+t=0s V=31.3258 SoC=0.9999 Tc=25.00 Ts=25.00
+t=0s V=31.3001 SoC=0.9999 Tc=25.00 Ts=25.00
+t=0s V=31.2748 SoC=0.9999 Tc=25.01 Ts=25.00
+t=0s V=31.2500 SoC=0.9999 Tc=25.01 Ts=25.00
+t=0s V=31.2256 SoC=0.9999 Tc=25.01 Ts=25.00
+t=0s V=31.2016 SoC=0.9999 Tc=25.01 Ts=25.00
+t=0s V=31.1781 SoC=0.9999 Tc=25.01 Ts=25.00
+t=0s V=31.1549 SoC=0.9999 Tc=25.01 Ts=25.00
+t=0s V=31.1322 SoC=0.9999 Tc=25.01 Ts=25.00
+t=0s V=31.1099 SoC=0.9999 Tc=25.01 Ts=25.00
+t=0s V=31.0879 SoC=0.9998 Tc=25.01 Ts=25.00
+t=0s V=31.0663 SoC=0.9998 Tc=25.01 Ts=25.00
+t=0s V=31.0451 SoC=0.9998 Tc=25.01 Ts=25.00
+t=0s V=31.0243 SoC=0.9998 Tc=25.01 Ts=25.00
+t=0s V=31.0038 SoC=0.9998 Tc=25.01 Ts=25.00
+t=0s V=30.9837 SoC=0.9998 Tc=25.01 Ts=25.00
+t=0s V=30.9639 SoC=0.9998 Tc=25.01 Ts=25.00
+t=0s V=30.9445 SoC=0.9998 Tc=25.01 Ts=25.00
+t=0s V=30.9254 SoC=0.9998 Tc=25.02 Ts=25.00
+t=0s V=30.9066 SoC=0.9998 Tc=25.02 Ts=25.00
+t=0s V=30.8882 SoC=0.9997 Tc=25.02 Ts=25.00
+t=0s V=30.8701 SoC=0.9997 Tc=25.02 Ts=25.00
+t=0s V=30.8523 SoC=0.9997 Tc=25.02 Ts=25.00
+t=0s V=30.8348 SoC=0.9997 Tc=25.02 Ts=25.00
+t=0s V=30.8176 SoC=0.9997 Tc=25.02 Ts=25.00
+t=0s V=30.8006 SoC=0.9997 Tc=25.02 Ts=25.00
+t=0s V=30.7840 SoC=0.9997 Tc=25.02 Ts=25.00
+t=0s V=30.7677 SoC=0.9997 Tc=25.02 Ts=25.00
+t=0s V=30.7516 SoC=0.9997 Tc=25.02 Ts=25.00
+t=0s V=30.7358 SoC=0.9997 Tc=25.02 Ts=25.00
+t=0s V=30.7203 SoC=0.9997 Tc=25.02 Ts=25.00
+t=0s V=30.7051 SoC=0.9996 Tc=25.02 Ts=25.00
+t=0s V=30.6901 SoC=0.9996 Tc=25.02 Ts=25.00
+t=0s V=30.6753 SoC=0.9996 Tc=25.03 Ts=25.00
+t=0s V=30.6609 SoC=0.9996 Tc=25.03 Ts=25.00
+t=0s V=30.6466 SoC=0.9996 Tc=25.03 Ts=25.00
+t=0s V=30.6326 SoC=0.9996 Tc=25.03 Ts=25.00
+t=0s V=30.6189 SoC=0.9996 Tc=25.03 Ts=25.00
+t=0s V=30.6053 SoC=0.9996 Tc=25.03 Ts=25.00
+t=0s V=30.5920 SoC=0.9996 Tc=25.03 Ts=25.00
+t=0s V=30.5789 SoC=0.9996 Tc=25.03 Ts=25.00
+t=0s V=30.5661 SoC=0.9996 Tc=25.03 Ts=25.00
+t=0s V=30.5534 SoC=0.9995 Tc=25.03 Ts=25.00
+t=0s V=30.5410 SoC=0.9995 Tc=25.03 Ts=25.00
+t=0s V=30.5288 SoC=0.9995 Tc=25.03 Ts=25.00
+t=0s V=30.5168 SoC=0.9995 Tc=25.03 Ts=25.00
+t=0s V=30.5050 SoC=0.9995 Tc=25.03 Ts=25.00
+t=0s V=30.4933 SoC=0.9995 Tc=25.04 Ts=25.00
+t=0s V=30.4819 SoC=0.9995 Tc=25.04 Ts=25.00
+t=0s V=30.4707 SoC=0.9995 Tc=25.04 Ts=25.00
+t=0s V=30.4596 SoC=0.9995 Tc=25.04 Ts=25.00
+t=0s V=30.4488 SoC=0.9995 Tc=25.04 Ts=25.00
+t=0s V=30.4381 SoC=0.9995 Tc=25.04 Ts=25.00
+t=0s V=30.4276 SoC=0.9994 Tc=25.04 Ts=25.00
+t=0s V=30.4172 SoC=0.9994 Tc=25.04 Ts=25.00
+t=0s V=30.4071 SoC=0.9994 Tc=25.04 Ts=25.00
+t=0s V=30.3971 SoC=0.9994 Tc=25.04 Ts=25.00
+t=0s V=30.3873 SoC=0.9994 Tc=25.04 Ts=25.00
+t=0s V=30.3776 SoC=0.9994 Tc=25.04 Ts=25.00
+t=0s V=30.3681 SoC=0.9994 Tc=25.04 Ts=25.00
+t=0s V=30.3587 SoC=0.9994 Tc=25.05 Ts=25.00
+t=0s V=30.3495 SoC=0.9994 Tc=25.05 Ts=25.00
+t=0s V=30.3405 SoC=0.9994 Tc=25.05 Ts=25.00
+t=0s V=30.3316 SoC=0.9993 Tc=25.05 Ts=25.00
+t=0s V=30.3228 SoC=0.9993 Tc=25.05 Ts=25.00
+t=0s V=30.3142 SoC=0.9993 Tc=25.05 Ts=25.00
+t=0s V=30.3057 SoC=0.9993 Tc=25.05 Ts=25.00
+t=0s V=30.2974 SoC=0.9993 Tc=25.05 Ts=25.00
+t=0s V=30.2892 SoC=0.9993 Tc=25.05 Ts=25.00
+t=0s V=30.2811 SoC=0.9993 Tc=25.05 Ts=25.00
+t=0s V=30.2731 SoC=0.9993 Tc=25.05 Ts=25.00

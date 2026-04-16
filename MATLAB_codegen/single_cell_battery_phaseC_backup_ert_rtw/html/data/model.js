@@ -1,0 +1,1 @@
+var modelInfo = {model:"single_cell_battery_phaseC_backup"};var modelHierarchy=[{model:"single_cell_battery_phaseC_backup",relativePath:"_internal.html",parent:"null"},];var AddCode = true;var ProtectedModel = false;

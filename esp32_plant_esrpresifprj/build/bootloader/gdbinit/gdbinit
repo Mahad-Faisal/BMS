@@ -1,0 +1,2 @@
+source C:/Users/mahad/workspace/esp32_plant/build/bootloader/gdbinit/symbols
+source C:/Users/mahad/workspace/esp32_plant/build/bootloader/gdbinit/connect
