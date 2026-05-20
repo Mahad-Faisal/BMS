@@ -99,7 +99,7 @@ all: bms_telemetry.elf secondary-outputs
 
 # Tool invocations
 bms_telemetry.elf: $(OBJS) $(USER_OBJS) $(LINKER_SCRIPT)
-	$(file > bms_telemetry.elf.in,-mthumb -mfloat-abi=hard -mcpu=cortex-m85+nopacbti -O2 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-strict-aliasing -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wshadow -Wlogical-op -Waggregate-return -Wfloat-equal -g -T "fsp.ld" -Xlinker --gc-sections -L "C:\\rh\\bms\\bms_telemetry/script" -Wl,-Map,"bms_telemetry.map" --specs=nano.specs -o "bms_telemetry.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group)
+	$(file > bms_telemetry.elf.in,-mthumb -mfloat-abi=hard -mcpu=cortex-m85+nopacbti -O2 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-strict-aliasing -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wshadow -Wlogical-op -Waggregate-return -Wfloat-equal -g -T "fsp.ld" -Xlinker --gc-sections -L "C:\\rh\\bms\\bms_telemetry/script" -Wl,-Map,"bms_telemetry.map" --specs=nano.specs -u _printf_float -o "bms_telemetry.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group)
 	@echo Building target: $@ && arm-none-eabi-gcc @"bms_telemetry.elf.in"
 bms_telemetry.srec: bms_telemetry.elf
 	arm-none-eabi-objcopy -O srec "bms_telemetry.elf"  "bms_telemetry.srec"

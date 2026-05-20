@@ -1,4 +1,4 @@
-src/can_task_entry.o: ../src/can_task_entry.c \
+src/estimator_task_entry.o: ../src/estimator_task_entry.c \
  C:/rh/bms/bms_telemetry/ra_gen/new_thread0.h \
  C:/rh/bms/bms_telemetry/ra/fsp/inc/api/bsp_api.h \
  C:/rh/bms/bms_telemetry/ra/fsp/inc/api/fsp_common_api.h \
@@ -85,8 +85,8 @@ src/can_task_entry.o: ../src/can_task_entry.c \
  C:/rh/bms/bms_telemetry/ra_cfg/fsp_cfg/r_iic_master_cfg.h \
  C:/rh/bms/bms_telemetry/ra/fsp/inc/api/r_i2c_master_api.h \
  C:/rh/bms/bms_telemetry/src/bms/bms.h ../src/plant_mailbox.h \
- C:/rh/bms/bms_telemetry/ra_gen/hal_data.h \
- C:/rh/bms/bms_telemetry/ra/aws/FreeRTOS/FreeRTOS/Source/include/queue.h
+ ../src/adekf.h ../src/bms_nn_residual_fp32.h \
+ C:/rh/bms/bms_telemetry/ra_gen/hal_data.h
 C:/rh/bms/bms_telemetry/ra_gen/new_thread0.h:
 C:/rh/bms/bms_telemetry/ra/fsp/inc/api/bsp_api.h:
 C:/rh/bms/bms_telemetry/ra/fsp/inc/api/fsp_common_api.h:
@@ -174,5 +174,6 @@ C:/rh/bms/bms_telemetry/ra_cfg/fsp_cfg/r_iic_master_cfg.h:
 C:/rh/bms/bms_telemetry/ra/fsp/inc/api/r_i2c_master_api.h:
 C:/rh/bms/bms_telemetry/src/bms/bms.h:
 ../src/plant_mailbox.h:
+../src/adekf.h:
+../src/bms_nn_residual_fp32.h:
 C:/rh/bms/bms_telemetry/ra_gen/hal_data.h:
-C:/rh/bms/bms_telemetry/ra/aws/FreeRTOS/FreeRTOS/Source/include/queue.h:

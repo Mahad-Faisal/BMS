@@ -1,85 +1,110 @@
 #include "new_thread0.h"
-/* New Thread entry function */
 #include "ina226.h"
-#include"bms.h"
+#include "bms.h"
 #include "FreeRTOS.h"
 #include "semphr.h"
+#include "estimator_task_entry.h"
+#include "r_sci_b_uart.h"
+#include <stdbool.h>
 
+/* ── Globals used by estimator UART send ─────────────────────────────── */
 volatile bool uart_tx_complete = false;
+
+/* ── Externs defined elsewhere ───────────────────────────────────────── */
 extern SemaphoreHandle_t bms_mutex;
+extern SemaphoreHandle_t plant_mailbox_mutex;  /* defined in can_task_entry.c */
+
+/* ── Task entry prototypes ───────────────────────────────────────────── */
 void sensor_task_entry(void *pvParameters);
 void can_task_entry(void *pvParameters);
-void uart_task_entry(void *pvParameters);
+void uart_task_entry(void *pvParameters);      /* declared but NOT used */
 
+/* ── Static mutex buffer for plant mailbox ───────────────────────────── */
+static StaticSemaphore_t plant_mailbox_mutex_buf;
+
+/* ── Stack overflow hook ─────────────────────────────────────────────── */
+void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
+{
+    volatile char *name = pcTaskName;
+    (void) name;
+    (void) xTask;
+
+    __BKPT(0);
+
+    while (1)
+    {
+        /* trap */
+    }
+}
+
+/* ── UART callback ───────────────────────────────────────────────────── */
 void uart_callback(uart_callback_args_t *p_args)
 {
-    if(p_args->event == UART_EVENT_TX_COMPLETE)
+    if (p_args->event == UART_EVENT_TX_COMPLETE)
     {
         uart_tx_complete = true;
     }
 }
 
-void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
-{
-    FSP_PARAMETER_NOT_USED(xTask);
-    FSP_PARAMETER_NOT_USED(pcTaskName);
-    __BKPT(0); // halt in debugger on stack overflow
-}
-
-/* Sensor task */
-static StackType_t sensor_stack[512];
-static StaticTask_t sensor_tcb;
-TaskHandle_t sensor_task_handle;
-
-/* CAN TX task */
-static StackType_t can_stack[512];
+/* ── Task stacks / TCBs ──────────────────────────────────────────────── */
+static StackType_t can_stack[2048];
 static StaticTask_t can_tcb;
 TaskHandle_t can_task_handle;
 
-/* UART task */
-static StackType_t uart_stack[512];
+static StaticTask_t s_est_tcb;
+static StackType_t  s_est_stack[8192];
+TaskHandle_t estimator_task_handle;
+
+/* Optional / currently unused */
+static StackType_t sensor_stack[1024];
+static StaticTask_t sensor_tcb;
+TaskHandle_t sensor_task_handle;
+
+static StackType_t uart_stack[1024];
 static StaticTask_t uart_tcb;
 TaskHandle_t uart_task_handle;
 
-/* pvParameters contains TaskHandle_t */
+/* ── Main FSP thread entry ───────────────────────────────────────────── */
 void new_thread0_entry(void *pvParameters)
 {
     FSP_PARAMETER_NOT_USED(pvParameters);
 
+    /* Create BMS mutex */
     bms_mutex = xSemaphoreCreateMutexStatic(&bms_mutex_buffer);
     configASSERT(bms_mutex != NULL);
 
-    R_SCI_B_UART_Open(&g_uart0_ctrl, &g_uart0_cfg);
-    uint8_t msg[] = "BMS starting...\r\n";
-    uart_tx_complete = false;
-    R_SCI_B_UART_Write(&g_uart0_ctrl, msg, sizeof(msg)-1);
-    while(!uart_tx_complete) { vTaskDelay(1); }
+    /* Create plant mailbox mutex before CAN/estimator tasks start */
+    plant_mailbox_mutex = xSemaphoreCreateMutexStatic(&plant_mailbox_mutex_buf);
+    configASSERT(plant_mailbox_mutex != NULL);
 
-  //  INA226_Init();  /* I2C + config + cal registers */
+    /* Open UART before estimator attempts CSV logging */
+    fsp_err_t uart_err = R_SCI_B_UART_Open(&g_uart0_ctrl, &g_uart0_cfg);
+    configASSERT(uart_err == FSP_SUCCESS);
 
-    /* Now create tasks — peripherals are ready */
-    sensor_task_handle = xTaskCreateStatic(sensor_task_entry, "Sensor", 512, NULL, 3, sensor_stack, &sensor_tcb);
-    can_task_handle    = xTaskCreateStatic(can_task_entry,    "CAN",    512, NULL, 2, can_stack,    &can_tcb);
-    uart_task_handle   = xTaskCreateStatic(uart_task_entry,   "UART",   512, NULL, 1, uart_stack,   &uart_tcb);
+    /* Start CAN task first so mailbox begins filling */
+    can_task_handle = xTaskCreateStatic(can_task_entry,
+                                        "CAN",
+                                        2048,
+                                        NULL,
+                                        4,
+                                        can_stack,
+                                        &can_tcb);
+    configASSERT(can_task_handle != NULL);
 
-    /* This thread's job is done — suspend or idle */
+    /* Start estimator task with larger stack for float snprintf */
+    estimator_task_handle = xTaskCreateStatic(estimator_task_entry,
+                                              "__estimator__",
+                                              8192,
+                                              NULL,
+                                              3,
+                                              s_est_stack,
+                                              &s_est_tcb);
+    configASSERT(estimator_task_handle != NULL);
+
+    /* Do NOT start uart_task_entry while estimator owns UART */
+
     for (;;)
-    {   if (xSemaphoreTake(bms_mutex, pdMS_TO_TICKS(10)) == pdTRUE)
     {
-        bms_data.voltage_v    = 12.6f;
-        bms_data.current_a    = 1.5f;
-        bms_data.power_w      = 18.9f;
-        bms_data.soc_pct      = 85.0f;
-        bms_data.soh_pct      = 98.0f;
-        bms_data.sop_w        = 100.0f;
-        bms_data.max_charge_a = 5.0f;
-        bms_data.max_discharge_a = 10.0f;
-        bms_data.state        = 1;
-        bms_data.fault_flags  = 0;
-        bms_data.mode         = 0;
-        xSemaphoreGive(bms_mutex);
+        vTaskDelay(pdMS_TO_TICKS(1000));
     }
-    vTaskDelay(pdMS_TO_TICKS(100));
-}
-
 }

@@ -64,7 +64,7 @@ ra/fsp/src/r_ioport \
 ra/fsp/src/r_sci_b_uart \
 ra/fsp/src/rm_freertos_port \
 ra_gen \
-src/bms \
 src \
+src/bms \
 src/ina226 \
 

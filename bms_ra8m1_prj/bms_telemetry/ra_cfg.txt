@@ -700,7 +700,7 @@ FSP Configuration
     Hooks: Use Tick Hook: Disabled
     General: Cpu Clock Hz: SystemCoreClock
     General: Tick Rate Hz: 1000
-    General: Max Priorities: 5
+    General: Max Priorities: 6
     General: Minimal Stack Size: 128
     General: Max Task Name Len: 16
     Stats: Use Trace Facility: Disabled
@@ -820,11 +820,11 @@ FSP Configuration
       Reception: FIFOs: FIFO 1: Interrupt Threshold: 1/2 full
       Reception: FIFOs: FIFO 1: Payload Size: 8 bytes
       Reception: FIFOs: FIFO 1: Depth: 16 stages
-      Common FIFOs: FIFO 0: Enable: Disabled
+      Common FIFOs: FIFO 0: Enable: Enabled
       Common FIFOs: FIFO 0: Mode: Receive
-      Common FIFOs: FIFO 0: RX Interrupt Enable: Disabled
+      Common FIFOs: FIFO 0: RX Interrupt Enable: Enabled
       Common FIFOs: FIFO 0: TX Interrupt Enable: Disabled
-      Common FIFOs: FIFO 0: Interrupt Mode: Threshold
+      Common FIFOs: FIFO 0: Interrupt Mode: Every frame
       Common FIFOs: FIFO 0: Interrupt Threshold: 1/2 full
       Common FIFOs: FIFO 0: Payload Size: 8 bytes
       Common FIFOs: FIFO 0: Depth: 16 stages
@@ -863,7 +863,7 @@ FSP Configuration
     Symbol: new_thread0
     Name: New Thread
     Stack size (bytes): 4096
-    Priority: 1
+    Priority: 5
     Thread Context: NULL
     Memory Allocation: Static
     Allocate Secure Context: Enable

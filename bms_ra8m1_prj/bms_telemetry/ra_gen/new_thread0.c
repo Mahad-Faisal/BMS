@@ -34,7 +34,7 @@ void new_thread0_create(void)
                                      new_thread0_func,
                                      (const char*) "New Thread", 4096 / 4, // In words, not bytes
                                      (void*) &new_thread0_parameters, //pvParameters
-                                     1,
+                                     5,
 #if 1
                                      (StackType_t*) &new_thread0_stack,
                                      (StaticTask_t*) &new_thread0_memory

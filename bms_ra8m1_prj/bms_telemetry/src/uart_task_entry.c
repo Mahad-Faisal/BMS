@@ -45,7 +45,7 @@ void uart_task_entry(void *pvParameters)
             continue;
         }
 
-        /* CSV: V,I,P,SoC,SoH,SoP,state,faults,alive */
+        /* CSV: V,I,P,SoC,SoH,SoP,state,faults,alive
         snprintf(buf, sizeof(buf),
                  "%.3f,%.4f,%.3f,%.1f,%.1f,%.1f,%u,%u,%u\r\n",
                  local.voltage_v,
@@ -58,7 +58,7 @@ void uart_task_entry(void *pvParameters)
                  local.fault_flags,
                  local.alive_ctr);
 
-        uart_print(buf);
+        uart_print(buf); */
 
         vTaskDelayUntil(&xLastWake, pdMS_TO_TICKS(250));  /* 4 Hz */
     }

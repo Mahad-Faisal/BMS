@@ -4,21 +4,30 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/adekf.c \
+../src/bms_nn_residual_fp32.c \
 ../src/can_task_entry.c \
+../src/estimator_task_entry.c \
 ../src/hal_warmstart.c \
 ../src/new_thread0_entry.c \
 ../src/sensor_task_entry.c \
 ../src/uart_task_entry.c 
 
 C_DEPS += \
+./src/adekf.d \
+./src/bms_nn_residual_fp32.d \
 ./src/can_task_entry.d \
+./src/estimator_task_entry.d \
 ./src/hal_warmstart.d \
 ./src/new_thread0_entry.d \
 ./src/sensor_task_entry.d \
 ./src/uart_task_entry.d 
 
 OBJS += \
+./src/adekf.o \
+./src/bms_nn_residual_fp32.o \
 ./src/can_task_entry.o \
+./src/estimator_task_entry.o \
 ./src/hal_warmstart.o \
 ./src/new_thread0_entry.o \
 ./src/sensor_task_entry.o \

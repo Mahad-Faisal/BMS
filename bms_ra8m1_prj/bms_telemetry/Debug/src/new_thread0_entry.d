@@ -85,7 +85,7 @@ src/new_thread0_entry.o: ../src/new_thread0_entry.c \
  C:/rh/bms/bms_telemetry/ra_cfg/fsp_cfg/r_iic_master_cfg.h \
  C:/rh/bms/bms_telemetry/ra/fsp/inc/api/r_i2c_master_api.h \
  C:/rh/bms/bms_telemetry/src/ina226/ina226.h \
- C:/rh/bms/bms_telemetry/src/bms/bms.h
+ C:/rh/bms/bms_telemetry/src/bms/bms.h ../src/estimator_task_entry.h
 C:/rh/bms/bms_telemetry/ra_gen/new_thread0.h:
 C:/rh/bms/bms_telemetry/ra/fsp/inc/api/bsp_api.h:
 C:/rh/bms/bms_telemetry/ra/fsp/inc/api/fsp_common_api.h:
@@ -173,3 +173,4 @@ C:/rh/bms/bms_telemetry/ra_cfg/fsp_cfg/r_iic_master_cfg.h:
 C:/rh/bms/bms_telemetry/ra/fsp/inc/api/r_i2c_master_api.h:
 C:/rh/bms/bms_telemetry/src/ina226/ina226.h:
 C:/rh/bms/bms_telemetry/src/bms/bms.h:
+../src/estimator_task_entry.h:
