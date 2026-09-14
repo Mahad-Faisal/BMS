@@ -1,0 +1,69 @@
+/*
+ * sensor_task_entry.c
+ *
+ *  Created on: Mar 31, 2026
+ *      Author: mahad
+ */
+#include "new_thread0.h"
+#include "ina226.h"
+#include "bms.h"
+#include "FreeRTOS.h"
+#include "semphr.h"
+
+#define VBUS_OV_THRESHOLD    16.0f    /* overvoltage trip    [V] */
+#define VBUS_UV_THRESHOLD     2.5f    /* undervoltage trip   [V] */
+#define CURRENT_OC_THRESHOLD  1.0f    /* overcurrent trip    [A] */
+#define SENSOR_LOSS_THRESH    0.001f  /* sensor loss detect  [V/A] */
+#define BATTERY_CAPACITY_AH   2.9f    /* Panasonic 18650PF   [Ah] */
+
+extern SemaphoreHandle_t bms_mutex;
+extern bms_data_t        bms_data;
+
+static float soc_pct = 100.0f;
+
+void sensor_task_entry(void *pvParameters)
+{
+    FSP_PARAMETER_NOT_USED(pvParameters);
+    TickType_t xLastWake = xTaskGetTickCount();
+
+    for (;;)
+    {
+        float v = 12.6f;
+              float i = 1.5f;
+              float p = v * i;
+
+        /* Fault detection */
+        uint8_t faults = 0;
+        if (v > VBUS_OV_THRESHOLD)                              faults |= BMS_FAULT_OVERVOLTAGE;
+        if (v < VBUS_UV_THRESHOLD && v > SENSOR_LOSS_THRESH)   faults |= BMS_FAULT_UNDERVOLATGE;
+        if (i > CURRENT_OC_THRESHOLD)                           faults |= BMS_FAULT_OVERCURRENT;
+        if (v < SENSOR_LOSS_THRESH && i < SENSOR_LOSS_THRESH)  faults |= BMS_FAULT_SENSOR_LOSS;
+
+        /* Coulomb counting SoC */
+        float dt_h = 0.1f / 3600.0f;
+        soc_pct -= (i * dt_h / BATTERY_CAPACITY_AH) * 100.0f;
+        if (soc_pct > 100.0f) soc_pct = 100.0f;
+        if (soc_pct <   0.0f) soc_pct =   0.0f;
+
+        /* Determine state */
+        bms_state_t state;
+        if (faults)         state = BMS_STATE_FAULT;
+        else if (i > 0.01f) state = BMS_STATE_DISCHARGE;
+        else if (i < -0.01f)state = BMS_STATE_CHARGE;
+        else                state = BMS_STATE_STANDBY;
+
+        /* Write to shared struct under mutex */
+        if (xSemaphoreTake(bms_mutex, pdMS_TO_TICKS(10)) == pdTRUE)
+        {
+            bms_data.voltage_v   = v;
+            bms_data.current_a   = i;
+            bms_data.power_w     = p;
+            bms_data.soc_pct     = soc_pct;
+            bms_data.fault_flags = faults;
+            bms_data.state       = state;
+            xSemaphoreGive(bms_mutex);
+        }
+
+        vTaskDelayUntil(&xLastWake, pdMS_TO_TICKS(100));  /* 10 Hz */
+    }
+}
